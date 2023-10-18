@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net7.0</TargetFrameworks>
+    <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AvaloniaPlatform>$([MSBuild]::GetTargetPlatformIdentifier($(TargetFramework)))</AvaloniaPlatform>
+    <!-- Normalize casing -->
+    <AvaloniaPlatform Condition="'$(AvaloniaPlatform)' == ''">Desktop</AvaloniaPlatform>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="player.fs" />
+    <Compile Include="App.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="7.0.0" />
+    <PackageReference Include="Fabulous" Version="2.3.0" />
+    <PackageReference Include="Fabulous.Avalonia" Version="2.0.0-pre9" />
+    <PackageReference Include="LibVLCSharp.Avalonia" Version="3.7.0" />
+  </ItemGroup>
+</Project>
